@@ -1,0 +1,9 @@
+#floo
+*.floo
+*.flooignore
+
+#webkeys
+/server/keys/
+
+#dependencies
+node_modules/
