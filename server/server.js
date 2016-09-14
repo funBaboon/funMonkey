@@ -1,12 +1,12 @@
 
 (function() {
-
   var express = require('express');
   var bodyParser = require('body-parser');
   var path = require('path');
   var app = express();
   var http = require('http');
-  var ebayController = require('./controllers/ebayController.js')
+  var ebayController = require('./controllers/ebayController.js');
+  // require('body-parser-xml')(bodyParser);
 
   app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname, '/../client')));

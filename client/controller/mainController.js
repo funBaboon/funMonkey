@@ -11,7 +11,7 @@
     $scope.queryEbay = queryEbay;
 
     function queryEbay(query) {
-      query = query.replace(/ /g, '+');
+      query = query.replace(/ /g, '%20');
       $http({
         method: 'GET',
         url: '/api/ebay/'+ query
