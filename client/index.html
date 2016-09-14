@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-<html>
-  <title> Comparison </title>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-  <body>
+<html ng-app="App">
 
-    <form>
+  <head>
+    <title> Comparison </title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script src="./controller/mainController.js"></script>
+  </head>
+
+  <body ng-controller="mainCtrl">
+    <form ng-submit="queryEbay(searchQuery)">
        <input type="text" ng-model="searchQuery" placeholder="Search">
-       <button ng-click=submit(searchQuery)>Submit</button>
+       <button type="submit">Submit</button>
     </form>
 
+    <hr>
+    <h2>Ebay Search Results:</h2>
+    <p> {{results}} </p>
+    <div>
 
-    <script>
-    </script>
+    </div>
   </body>
 </html>

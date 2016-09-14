@@ -1,18 +1,15 @@
 (function() {
-var ebayKeys = require("../keys/ebayKeys");
 
-//EBAY SHOPPING API QUERY URL
+  var request = require('request');
 
-function queryEbay (query){
-
-  var ebayApiUrl = 'http://open.api.ebay.com/shopping?';
-  var params = {
-    version: 951,
-    appid: ebayKeys.ebayKeys.appID,
-    callName: 'FindProducts',
-    QueryKeywords: query.split(' ').join('+')
+  function queryEbay(req,res) {
+    console.log(req.params.query)
+    request('http://open.api.ebay.com/shopping?&version=951&appid=&callName=FindProducts&QueryKeywords=' + req.params.query,
+      function(error, response, body) {
+      res.json(response)
+      })
   }
-}
 
-module.exports
+  module.exports.queryEbay = queryEbay;
+
 })();
