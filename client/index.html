@@ -15,9 +15,15 @@
 
     <hr>
     <h2>Ebay Search Results:</h2>
-    <div>
-    {{results}}
 
+    <div ng-repeat="objectItem in data">
+      <table ng-repeat="(key,value) in objectItem">
+        <tr>
+        <td>{{key}}</td> <td>{{value}}</td>
+        </tr>
+      </table>
+      <hr>
     </div>
+
   </body>
 </html>

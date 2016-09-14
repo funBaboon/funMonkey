@@ -8,13 +8,13 @@
             '&SERVICE-VERSION=1.0.0' +
             '&GLOBAL-ID=EBAY-US' +
             '&SECURITY-APPNAME=' + ebayKeys.ebayKeys.appID +
-            '&RESPONSE-DATA-FORMAT=XML' +
+            '&RESPONSE-DATA-FORMAT=JSON' +
             '&REST-PAYLOAD' +
             '&keywords=' + req.params.query,
       function(error, response, body) {
-      res.send(response.body);
+        var result = JSON.parse(response.body)
+        res.send(result.findItemsByKeywordsResponse[0].searchResult[0].item);
       })
-      // &version=951&appid=' + ebayKeys.ebayKeys.appID +'&callName=FindProducts&QueryKeywords=' + req.params.query,
   }
 
   module.exports.queryEbay = queryEbay;

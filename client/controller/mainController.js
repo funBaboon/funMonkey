@@ -16,7 +16,8 @@
         method: 'GET',
         url: '/api/ebay/'+ query
       }).then(function success(res) {
-        $scope.results = res.data;
+        console.log(res.data);
+        $scope.data = res.data;
         $scope.searchQuery = '';
       }, function err(res){
         console.log('error:', res)
