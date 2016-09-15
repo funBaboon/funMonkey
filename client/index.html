@@ -16,10 +16,11 @@
     <hr>
     <h2>Ebay Search Results:</h2>
 
-    <div ng-repeat="objectItem in data">
+    <div ng-repeat="objectItem in data | filter:{ country: 'US' }">
       <table >
+
         <tr>
-          <td style="font-weight:bold">Title</td> <td>{{objectItem.title[0]}}</td>
+          <td style="font-weight:bold">Title</td> <td>{{objectItem.title[0]}}</td> <td> <img src="{{objectItem.galleryURL[0]}}"> </td>
         </tr>
         <tr>
           <td style="font-weight:bold">ItemId</td> <td>{{objectItem.itemId[0]}}</td>
@@ -28,8 +29,15 @@
           <td style="font-weight:bold">ItemPrice</td> <td>${{objectItem.sellingStatus[0].currentPrice[0]. __value__}}</td>
         </tr>
         <tr>
+          <td style="font-weight:bold">Primary Category</td> <td>{{objectItem.primaryCategory}}</td>
+        </tr>
+        <tr>
+          <td style="font-weight:bold">Listing Url</td> <td>{{objectItem.viewItemURL[0]}}</td>
+        </tr>
+        <tr>
           <td style="font-weight:bold">Country</td> <td>{{objectItem.country[0]}}</td>
         </tr>
+
       </table>
       <hr>
     </div>
