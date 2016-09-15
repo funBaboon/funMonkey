@@ -4,6 +4,8 @@
   <head>
     <title> Comparison </title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+    <script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.0.0-crypto-sha1.js"></script>
+<script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.0.0-hmac-min.js"></script>
     <script src="./controller/mainController.js"></script>
   </head>
 
@@ -13,17 +15,15 @@
        <button type="submit">Submit</button>
     </form>
 
-    <hr>
     <h2>Ebay Search Results:</h2>
 
-    <div ng-repeat="objectItem in data | filter:{ country: 'US' }">
-      <table >
-
+    <div ng-repeat="objectItem in data | filter:{ country: 'US', returnsAccepted: true, condition: {$: 1000}}">
+      <table>
         <tr>
-          <td style="font-weight:bold">Title</td> <td>{{objectItem.title[0]}}</td> <td> <img src="{{objectItem.galleryURL[0]}}"> </td>
+          <td style="font-weight:bold">Title {{$index}}</td> <td>{{objectItem.title[0]}}</td> <td> <img src="{{objectItem.galleryURL[0]}}"> </td>
         </tr>
         <tr>
-          <td style="font-weight:bold">ItemId</td> <td>{{objectItem.itemId[0]}}</td>
+          <td style="font-weight:bold">ItemId:</td> <td>{{objectItem.itemId[0]}}</td>
         </tr>
         <tr>
           <td style="font-weight:bold">ItemPrice</td> <td>${{objectItem.sellingStatus[0].currentPrice[0]. __value__}}</td>
@@ -35,7 +35,19 @@
           <td style="font-weight:bold">Listing Url</td> <td>{{objectItem.viewItemURL[0]}}</td>
         </tr>
         <tr>
+          <td style="font-weight:bold">Returns Accepted</td> <td>{{objectItem.returnsAccepted[0]}}</td>
+        </tr>
+        <tr>
           <td style="font-weight:bold">Country</td> <td>{{objectItem.country[0]}}</td>
+        </tr>
+        <tr>
+          <td style="font-weight:bold">Condition</td> <td>{{objectItem.condition[0].conditionDisplayName[0]}}</td>
+        </tr>
+        <tr>
+          <td style="font-weight:bold">Condition ID</td> <td>{{objectItem.condition[0].conditionId[0]}}</td>
+        </tr>
+        <tr>
+          <td style="font-weight:bold">BuyItNow Available</td> <td>{{objectItem.listingInfo[0].buyItNowAvailable[0]}}</td>
         </tr>
 
       </table>
