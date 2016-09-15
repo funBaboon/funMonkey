@@ -13,6 +13,7 @@
             '&keywords=' + req.params.query,
       function(error, response, body) {
         var result = JSON.parse(response.body)
+        console.log(result.findItemsByKeywordsResponse[0].searchResult[0].item);
         res.send(result.findItemsByKeywordsResponse[0].searchResult[0].item);
       })
   }

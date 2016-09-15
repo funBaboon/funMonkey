@@ -6,14 +6,17 @@
   var app = express();
   var http = require('http');
   var ebayController = require('./controllers/ebayController.js');
-  // require('body-parser-xml')(bodyParser);
+  var amazonController = require('./controllers/amazonController.js')
+  var walmartController = require('./controllers/walmartController.js')
+
 
   app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname, '/../client')));
 
   var port = process.env.PORT || 1337;
 
-  app.get('/api/ebay/:query', ebayController.queryEbay)
+  app.get('/api/ebay/:query', ebayController.queryEbay);
+  app.get('/api/walmart/:query', walmartController.queryWalmart);
 
   app.listen(port, function() {
     console.log('server up & running on port ', port);
