@@ -13,7 +13,6 @@
     "angular": "^1.5.8",
     "body-parser": "^1.15.2",
     "body-parser-xml": "^1.1.0",
-    "crypto-js": "^3.1.6",
     "express": "^4.14.0",
     "jquery": "^2.2.1",
     "nodemon": "^1.10.0"

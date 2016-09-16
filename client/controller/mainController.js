@@ -32,8 +32,7 @@
         method: 'GET',
         url: '/api/walmart/'+ query
       }).then(function success(res) {
-        console.log(res.data.split("{\"itemid\""));
-        $scope.data = res.data.split("{\"itemid\"");
+        $scope.walmartQuery = res.data;
 
         $scope.searchQuery = '';
       }, function err(res){

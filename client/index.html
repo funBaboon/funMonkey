@@ -1,58 +1,101 @@
 <!DOCTYPE html>
 <html ng-app="App">
 
-  <head>
-    <title> Comparison </title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-    <script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.0.0-crypto-sha1.js"></script>
-<script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.0.0-hmac-min.js"></script>
-    <script src="./controller/mainController.js"></script>
-  </head>
+<head>
+  <title> Comparison </title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
+  <script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.0.0-crypto-sha1.js"></script>
+  <script type="text/javascript" src="http://crypto-js.googlecode.com/files/2.0.0-hmac-min.js"></script>
+  <script src="./controller/mainController.js"></script>
+</head>
 
-  <body ng-controller="mainCtrl">
-    <form ng-submit="queryEbay(searchQuery)">
-       <input type="text" ng-model="searchQuery" placeholder="Search">
-       <button type="submit">Submit</button>
-    </form>
+<body ng-controller="mainCtrl">
+  <form ng-submit="queryEbay(searchQuery); queryWalmart(searchQuery)">
+    <input type="text" ng-model="searchQuery" placeholder="Search">
+    <button type="submit">Submit</button>
+  </form>
 
-    <h2>Ebay Search Results:</h2>
+  <h2>Walmart Search Results:</h2>
+  <div ng-repeat="objectItem in walmartQuery ">
+    <table>
+      <tr>
+        <td style="font-weight:bold">Item Name:</td>
+        <td> {{objectItem.name}}</td><img src={{objectItem.thumbnailImage}}>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Model Number:</td>
+        <td> {{objectItem.modelNumber}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Sale Price:</td>
+        <td> ${{objectItem.salePrice}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">MSRP:</td>
+        <td> ${{objectItem.msrp}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">UPC:</td>
+        <td>{{objectItem.upc}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Standard Ship Rate:</td>
+        <td>${{objectItem.standardShipRate}}</td>
+      </tr>
+    </table>
+    <hr>
+  </div>
 
-    <div ng-repeat="objectItem in data | filter:{ country: 'US', returnsAccepted: true, condition: {$: 1000}}">
-      <table>
-        <tr>
-          <td style="font-weight:bold">Title {{$index}}</td> <td>{{objectItem.title[0]}}</td> <td> <img src="{{objectItem.galleryURL[0]}}"> </td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">ItemId:</td> <td>{{objectItem.itemId[0]}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">ItemPrice</td> <td>${{objectItem.sellingStatus[0].currentPrice[0]. __value__}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">Primary Category</td> <td>{{objectItem.primaryCategory}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">Listing Url</td> <td>{{objectItem.viewItemURL[0]}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">Returns Accepted</td> <td>{{objectItem.returnsAccepted[0]}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">Country</td> <td>{{objectItem.country[0]}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">Condition</td> <td>{{objectItem.condition[0].conditionDisplayName[0]}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">Condition ID</td> <td>{{objectItem.condition[0].conditionId[0]}}</td>
-        </tr>
-        <tr>
-          <td style="font-weight:bold">BuyItNow Available</td> <td>{{objectItem.listingInfo[0].buyItNowAvailable[0]}}</td>
-        </tr>
+  <h2>Ebay Search Results:</h2>
 
-      </table>
-      <hr>
-    </div>
+  <div ng-repeat="objectItem in data | filter:{ country: 'US', returnsAccepted: true, condition: {$: 1000}}">
+    <table>
+      <tr>
+        <td style="font-weight:bold">Title {{$index}}</td>
+        <td>{{objectItem.title[0]}}</td>
+        <td> <img src="{{objectItem.galleryURL[0]}}"> </td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">ItemId:</td>
+        <td>{{objectItem.itemId[0]}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">ItemPrice</td>
+        <td>${{objectItem.sellingStatus[0].currentPrice[0]. __value__}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Primary Category</td>
+        <td>{{objectItem.primaryCategory}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Listing Url</td>
+        <td>{{objectItem.viewItemURL[0]}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Returns Accepted</td>
+        <td>{{objectItem.returnsAccepted[0]}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Country</td>
+        <td>{{objectItem.country[0]}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Condition</td>
+        <td>{{objectItem.condition[0].conditionDisplayName[0]}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">Condition ID</td>
+        <td>{{objectItem.condition[0].conditionId[0]}}</td>
+      </tr>
+      <tr>
+        <td style="font-weight:bold">BuyItNow Available</td>
+        <td>{{objectItem.listingInfo[0].buyItNowAvailable[0]}}</td>
+      </tr>
 
-  </body>
+    </table>
+    <hr>
+  </div>
+
+</body>
+
 </html>
