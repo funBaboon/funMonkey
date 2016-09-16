@@ -1,3 +1,4 @@
+
 (function() {
   var express = require('express');
   var bodyParser = require('body-parser');
@@ -8,12 +9,13 @@
   var amazonController = require('./controllers/amazonController.js')
   var walmartController = require('./controllers/walmartController.js')
 
+
   app.use(bodyParser.json());
   app.use(express.static(path.join(__dirname, '/../client')));
 
-
   var port = process.env.PORT || 1337;
 
+  app.get('/api/amazon/:query', amazonController.queryAmazon);
   app.get('/api/ebay/:query', ebayController.queryEbay);
   app.get('/api/ebay/topSelling', ebayController.topSelling);
   app.get('/api/walmart/:query', walmartController.queryWalmart);
@@ -25,4 +27,3 @@
   });
 
 })();
-
