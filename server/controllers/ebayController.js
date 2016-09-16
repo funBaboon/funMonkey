@@ -18,6 +18,16 @@
       })
   }
 
-  module.exports.queryEbay = queryEbay;
+  function topSelling(req,res) {
+    request('http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getTopSellingProducts&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=' + ebayKeys.ebayKeys.appID + '&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&maxResults=10',
+      function(error, response, body) {
+        var result = JSON.parse(response.body);
+        res.json(result);
+    })
+  }
 
+  module.exports.queryEbay = queryEbay;
+  module.exports.topSelling = topSelling;
 })();
+
+

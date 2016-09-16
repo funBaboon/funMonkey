@@ -11,6 +11,14 @@
       })
   }
 
+  function trendingWalmart(req,res) {
+    request ('http://api.walmartlabs.com/v1/trends?apiKey=' + Walmart.secret.Key + ' &lsPublisherId=xyz&format=json', function(error, response, body) {
+      var result = JSON.parse(response.body);
+      console.log(result.length)
+    })
+  }
+
   module.exports.queryWalmart = queryWalmart;
+  module.exports.trendingWalmart = trendingWalmart;
 
 })();

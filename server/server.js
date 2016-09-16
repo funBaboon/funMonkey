@@ -16,7 +16,10 @@
   var port = process.env.PORT || 1337;
 
   app.get('/api/ebay/:query', ebayController.queryEbay);
+  app.get('/api/ebay/topSelling', ebayController.topSelling);
   app.get('/api/walmart/:query', walmartController.queryWalmart);
+  app.get('/api/walmart/trending', walmartController.trendingWalmart);
+
 
   app.listen(port, function() {
     console.log('server up & running on port ', port);
