@@ -7,7 +7,7 @@
             '&SERVICE-NAME=FindingService' +
             '&SERVICE-VERSION=1.0.0' +
             '&GLOBAL-ID=EBAY-US' +
-            '&SECURITY-APPNAME=' + ebayKeys.ebayKeys.appID +
+            '&SECURITY-APPNAME=' + ebayKeys.Keys.appID +
             '&RESPONSE-DATA-FORMAT=JSON' +
             '&REST-PAYLOAD' +
             '&keywords=' + req.params.query,

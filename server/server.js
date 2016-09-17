@@ -15,6 +15,7 @@
 
   var port = process.env.PORT || 1337;
 
+  app.get('/api/amazon/:query', amazonController.queryAmazon);
   app.get('/api/ebay/:query', ebayController.queryEbay);
   app.get('/api/ebay/topSelling', ebayController.topSelling);
   app.get('/api/walmart/:query', walmartController.queryWalmart);
