@@ -18,6 +18,7 @@
     request ('http://api.walmartlabs.com/v1/trends?apiKey=' + Walmart.secret.Key + ' &lsPublisherId=xyz&format=json', function(error, response, body) {
       var result = JSON.parse(response.body);
       res.json(result.items);
+      console.log(result.length)
     })
   }
 
