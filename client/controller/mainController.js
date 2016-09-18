@@ -19,8 +19,10 @@
         method: 'GET',
         url: '/api/amazon/' + query
       }).then(function success(res){
-        console.log(res.data);
-        $scope.amazonResults = res.data
+        var x2js = new X2JS();
+        var newData = x2js.xml_str2json(res.data);
+        console.log(newData);
+        $scope.amazonResults = newData;
       }, function err(res){
         console.log('error:', res);
       })
@@ -32,13 +34,16 @@
         method: 'GET',
         url: '/api/ebay/'+ query
       }).then(function success(res) {
-        console.log(res.data);
         $scope.ebayResults = res.data;
 
         $scope.searchQuery = '';
       }, function err(res){
         console.log('error:', res)
       });
+    }
+
+    function topSellingEbay(){
+
     }
 
     function queryWalmart(query) {

@@ -26,6 +26,30 @@
     })
   }
 
+
+  /*
+  Ebay Fee Structure
+  Listing fee: free for first 50 in month, $0.30 each for additional
+  Final Value fee: 10% of total amount (including shipping) up to max of $750
+
+  ------
+  Amazon Fee Structure (Individual Selling Plan)
+  Listing fee: $0.99 per item
+  Final Value fee: 8-20% (For media: % of item price + $1.35, for non-media: % of item price + shipping)
+
+  **(Business Selling Plan => no listing fee per item, but monthly subscription fee)
+
+  ------
+  Walmart Fee Structure
+  **Need to apply to sell on Walmart, selection based on reputation, sales projection, and bullshit.
+  JUST PURCHASE from here
+
+
+  */
+
+
+
+
   module.exports.queryEbay = queryEbay;
   module.exports.topSelling = topSelling;
 })();
