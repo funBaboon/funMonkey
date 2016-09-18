@@ -87,10 +87,10 @@
   </div>
 
 
-<!-- Ebay Results -->
+<!-- Ebay Search Results -->
   <div style="width:30%;float:right">
     <h2>Ebay Search Results:</h2>
-    <div ng-repeat="objectItem in ebayResults | filter:{ country: 'US', returnsAccepted: true, condition: {$: 1000}}">
+    <div ng-if="ebayResults" ng-repeat="objectItem in ebayResults | filter:{ country: 'US', returnsAccepted: true, condition: {$: 1000}}">
       <table>
         <tr>
           <td class="itemDescription">Title {{$index}}</td>
@@ -132,6 +132,29 @@
         <tr>
           <td class="itemDescription">BuyItNow Available</td>
           <td>{{objectItem.listingInfo[0].buyItNowAvailable[0]}}</td>
+        </tr>
+
+      </table>
+      <hr>
+    </div>
+    <div ng-if="ebayTopSellingItems" ng-repeat="objectItem in ebayTopSellingItems">
+      <table>
+         <tr>
+          <td class="itemDescription">Item</td>
+          <td>{{objectItem.title}}</td>
+          <td><img src="{{objectItem.imageURL}}"></td>
+        </tr>
+        <tr>
+          <td class="itemDescription">Price Range Max</td>
+          <td>{{objectItem.priceRangeMax.__value__}}</td>
+        </tr>
+        <tr>
+          <td class="itemDescription">Price Range Min</td>
+          <td>{{objectItem.priceRangeMin.__value__}}</td>
+        </tr>
+         <tr>
+          <td class="itemDescription">Product URL</td>
+          <td>{{objectItem.productURL}}</td>
         </tr>
 
       </table>

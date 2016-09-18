@@ -12,17 +12,27 @@
             '&REST-PAYLOAD' +
             '&keywords=' + req.params.query,
       function(error, response, body) {
-        var result = JSON.parse(response.body)
-        console.log(result.findItemsByKeywordsResponse[0].searchResult[0].item);
-        res.send(result.findItemsByKeywordsResponse[0].searchResult[0].item);
-      })
+        if(error){
+          console.log('error in queryEbay');
+        } else{
+          console.log('getting to queryEbay');
+          var result = JSON.parse(response.body)
+          // console.log(result.findItemsByKeywordsResponse[0].searchResult[0].item);
+          res.send(result.findItemsByKeywordsResponse[0].searchResult[0].item);
+        }
+      });
   }
 
   function topSelling(req,res) {
-    request('http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getTopSellingProducts&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=' + ebayKeys.ebayKeys.appID + '&RESPONSE-DATA-FORMAT=XML&REST-PAYLOAD&maxResults=10',
+    request('http://svcs.ebay.com/MerchandisingService?OPERATION-NAME=getTopSellingProducts&SERVICE-NAME=MerchandisingService&SERVICE-VERSION=1.1.0&CONSUMER-ID=' + ebayKeys.Keys.appID + '&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&maxResults=10',
       function(error, response, body) {
-        var result = JSON.parse(response.body);
-        res.json(result);
+        if(error){
+          console.log('error in topSellingEbay query');
+        } else{
+          console.log('getting to topSellingEbay');
+          var result = JSON.parse(response.body);
+          res.json(result);
+        }
     })
   }
 
