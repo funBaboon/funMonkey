@@ -10,6 +10,7 @@
   function mainCtrl($scope, $http) {
     $scope.queryAmazon = queryAmazon;
     $scope.queryEbay = queryEbay;
+    $scope.topSellingEbay = topSellingEbay;
     $scope.queryWalmart = queryWalmart;
     $scope.trendingWalmart = trendingWalmart;
 
@@ -43,7 +44,16 @@
     }
 
     function topSellingEbay(){
+       $http({
+        method: 'GET',
+        url: '/api/ebay/topSelling'
+      }).then(function success(res) {
+        $scope.ebayResults = res.data;
 
+        $scope.searchQuery = '';
+      }, function err(res){
+        console.log('error:', res)
+      });
     }
 
     function queryWalmart(query) {
