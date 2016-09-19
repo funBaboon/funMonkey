@@ -19,7 +19,7 @@
 
   function trendingWalmart(req,res) {
     request ('http://api.walmartlabs.com/v1/trends?apiKey=' + Walmart.secret.Key +
-             ' &lsPublisherId=xyz&format=json',
+             '&format=json',
       function(error, response, body) {
         if(error) {
           console.log('error in trendingWalmart');
@@ -27,7 +27,6 @@
           console.log('getting to trend')
           var result = JSON.parse(response.body);
           res.json(result.items);
-          console.log(result);
         }
     })
   }

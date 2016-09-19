@@ -75,7 +75,6 @@
         url: '/api/walmart/trending'
       }).then(function success(res) {
         $scope.walmartResults = res.data;
-        console.log(res);
         $scope.searchQuery = '';
       }, function err(res){
         console.log('error in trendingWalmart:', res);
