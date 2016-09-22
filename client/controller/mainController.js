@@ -10,9 +10,10 @@
   function mainCtrl($scope, $http) {
     $scope.queryAmazon = queryAmazon;
     $scope.queryEbay = queryEbay;
+    $scope.ebayDeals = ebayDeals;
     $scope.topSellingEbay = topSellingEbay;
     $scope.queryWalmart = queryWalmart;
-    $scope.trendingWalmart = trendingWalmart;
+    $scope.clearanceWalmart = clearanceWalmart;
 
     function queryAmazon(query){
       query = query.replace(/ /g, '%20');
@@ -26,6 +27,19 @@
       }, function err(res){
         console.log('error:', res);
       })
+    }
+
+    function ebayDeals() {
+      $scope.ebayResults = [];
+      $scope.ebayTopSellingItems = [];
+      $http({
+        method: 'GET',
+        url: '/api/ebay/deals'
+      }).then(function success(res) {
+        $scope.ebayListofDeals = res.data;
+      }, function err(res){
+        console.log('error in ebayDeals:', res)
+      });
     }
 
     function queryEbay(query) {
@@ -69,15 +83,15 @@
       });
     }
 
-    function trendingWalmart() {
+    function clearanceWalmart() {
       $http({
         method: 'GET',
-        url: '/api/walmart/trending'
+        url: '/api/walmart/clearance'
       }).then(function success(res) {
         $scope.walmartResults = res.data;
         $scope.searchQuery = '';
       }, function err(res){
-        console.log('error in trendingWalmart:', res);
+        console.log('error in clearanceWalmart:', res);
       });
     }
   }

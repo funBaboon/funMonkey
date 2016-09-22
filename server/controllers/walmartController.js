@@ -17,21 +17,27 @@
       });
   }
 
-  function trendingWalmart(req,res) {
-    request ('http://api.walmartlabs.com/v1/trends?apiKey=' + Walmart.secret.Key +
-             '&format=json',
+  function clearanceWalmart(req,res) {
+    request (
+    //   'http://api.walmartlabs.com/v1/feeds/clearance?apikey=' + Walmart.secret.Key +
+    //          // '&amp;categoryId=3944',
+    // '&format=json&categoryId=3944',
+             'http://api.walmartlabs.com/v1/feeds/preorder?apikey=' + Walmart.secret.Key + '&format=json',
       function(error, response, body) {
         if(error) {
-          console.log('error in trendingWalmart');
+          console.log('error in clearanceWalmart');
         } else{
-          console.log('getting to trend')
-          var result = JSON.parse(response.body);
-          res.json(result.items);
+          console.log('getting to clearance')
+          // var result = response;
+          console.log(response.body)
+          // var result = JSON.parse(response.body);
+          // console.log(result)
+          res.json(response.body);
         }
     })
   }
 
   module.exports.queryWalmart = queryWalmart;
-  module.exports.trendingWalmart = trendingWalmart;
+  module.exports.clearanceWalmart = clearanceWalmart;
 
 })();
